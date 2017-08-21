@@ -7,7 +7,6 @@ function Place(place, location, landmarks, date, notes){
   this.notes = notes;
 }
 
-
 //user interface logic
 $(document).ready(function(){
   $('form#place').submit(function(event){
@@ -20,8 +19,21 @@ $(document).ready(function(){
     var notes = $("input#notes").val();
 
     var newPlace = new Place(place, location, landmarks, date, notes);
-    console.log(newPlace);
 
+    $("ul.visited").append("<li><span class='visit'>" + newPlace.place + "</span></li>");
 
+    $("input#place-name").val("");
+    $("input#location").val("");
+    $("input#landmarks").val("");
+    $("input#date").val("");
+    $("input#notes").val("");
+
+    $(".visit").last().click(function() {
+      $(".display h3").text(newPlace.place + ", " + newPlace.location);
+      $(".landmarks").text(newPlace.landmarks);
+      $(".date").text(newPlace.date);
+      $(".notes").text(newPlace.notes);
+      $(".display").show();
+    });
   });
 });
