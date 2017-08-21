@@ -29,11 +29,20 @@ $(document).ready(function(){
     $("input#notes").val("");
 
     $(".visit").last().click(function() {
-      $(".display h3").text(newPlace.place + ", " + newPlace.location);
-      $(".landmarks").text(newPlace.landmarks);
-      $(".date").text(newPlace.date);
-      $(".notes").text(newPlace.notes);
-      $(".display").show();
+      if($("#display").is(":visible") && $("#display").hasClass(newPlace.place)) {
+        $("#display").hide();
+        $("#display").removeClass();
+      } else {
+        $("#display").show();
+        $("#display").removeClass();
+        $("#display").addClass(newPlace.place);
+
+        $("#display h3").text(newPlace.place + ", " + newPlace.location);
+        $(".landmarks").text(newPlace.landmarks);
+        $(".date").text(newPlace.date);
+        $(".notes").text(newPlace.notes);
+      }
+
     });
   });
 });
