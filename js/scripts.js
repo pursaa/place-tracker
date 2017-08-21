@@ -1,5 +1,11 @@
 //Business logic
-
+function Place(place, location, landmarks, date, notes){
+  this.place = place;
+  this.location = location;
+  this.landmarks = landmarks;
+  this.date = date;
+  this.notes = notes;
+}
 
 
 //user interface logic
@@ -12,7 +18,9 @@ $(document).ready(function(){
     var landmarks = $("input#landmarks").val();
     var date = $('input#date').val();
     var notes = $("input#notes").val();
-    
+
+    var newPlace = new Place(place, location, landmarks, date, notes);
+    console.log(newPlace);
 
 
   });
